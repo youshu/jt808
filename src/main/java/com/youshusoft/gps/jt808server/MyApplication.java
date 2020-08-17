@@ -14,15 +14,10 @@ import org.springframework.context.annotation.ComponentScan;
 @Slf4j
 public class MyApplication{
     public static ApplicationContext applicationContext;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
          MyApplication.applicationContext =  new SpringApplicationBuilder(MyApplication.class).web(WebApplicationType.NONE).run(args);
         Jt808NettyTcpServer jt808NettyTcpServer = new Jt808NettyTcpServer(6789);
-        try {
-            jt808NettyTcpServer.start();
-        } catch (InterruptedException e) {
-            log.error("InterruptedException err",e);
-            System.exit(0);
-        }
+        jt808NettyTcpServer.start();
     }
 
 }
